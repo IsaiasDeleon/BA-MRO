@@ -32,6 +32,9 @@ export const AppRoute = () => {
             const [numArticulos, setNumArticulos] = useState(0);
             //Get numero de articulos en gustos
             const [numGustos, setNumGustos] = useState(0);
+            //Get numero de articulos en gustos
+            const [numNoti, setNumNoti] = useState(0);
+            const [elemntsNoti, setElementsNoti] = useState([]);
             //Elementos de la tabla gustos
             const [elemntsGustos, setElementsGustos] = useState([]);
             const [notiCarrito, setNotiCarrito] = useState();
@@ -77,13 +80,42 @@ export const AppRoute = () => {
             },[])
             function busquedas(){
                 HTTP.post("/PruebasBusqueda",filtros).then((response) => {
-                    setDataFiltrado(response.data)
+                    if(response.data != ""){
+                        setDataFiltrado(response.data)
+                    }else{
+                        setDataFiltrado([])
+                    }
+                   
                 })
             }
             useEffect(() => {
                 busquedas()
             }, [filtros])
             
+            function NumElementsNoti(){
+                setNumNoti(0)
+                if(idU !== undefined){
+                    HTTP.post("/GetNumNoti",{"id":idU}).then((response) => {
+                        console.log(response.data)
+                        if(response.data !== ""){
+                            setNumNoti(response.data)
+                        }
+                        
+                    })
+                }
+               
+            }
+            function ElementsNoti(){
+                setElementsNoti([])
+                if(idU !== undefined){
+                    HTTP.post("/GetElementsNoti", {"id":idU}).then((response) => {
+                        console.log(response)
+                        if(response.data !== ""){
+                            setElementsNoti(response?.data);
+                        }
+                    })
+                }
+            }
            
             function NumElementsGustos(){
                 setNumGustos(0)
@@ -140,6 +172,27 @@ export const AppRoute = () => {
                 }
                 
             }
+            function EliminarNotiFicacion(id) {
+                if( idU !== undefined ){
+                   
+                    HTTP.post("/EliminarNotiFicacion", {"idU":idU, "id": id }).then((response) => {
+                    
+                        if (response.data == "ContraRechazada") {
+                            
+                            ElementsNoti()
+                       
+                            NumElementsNoti()
+                            //Enviamos el mensaje a las notificaciones para mostrar la alerta al usuario
+                            setNotiCarrito(response.data)
+                            setActiveNoti(true)
+                            setTimeout(() => {
+                                setActiveNoti(false)
+                            }, 4000);
+                        }
+                    })
+                }
+                
+            }
             useEffect(() => {
                 if(clickProducto !== undefined){
                     localStorage.setItem('idProduct', JSON.stringify(clickProducto))
@@ -150,6 +203,8 @@ export const AppRoute = () => {
                     NumElementsCarrito();
                     NumElementsGustos();
                     ElementsGustos();
+                    ElementsNoti();
+                    NumElementsNoti();
                 }
             }, [idU])
         
@@ -210,7 +265,7 @@ export const AppRoute = () => {
                 menu  === 1
                 ? (
                     <>
-                        <Head setEstadoMenu={setEstadoMenu} numArticulos={numArticulos} numGustos={numGustos} elemntsGustos={elemntsGustos} DeleteItemGustos={DeleteItemGustos} setMenu={setMenu} clickProducto={clickProducto} setClickProducto={setClickProducto} setFiltros={setFiltros} filtros={filtros}/>
+                      <Head setEstadoMenu={setEstadoMenu} numArticulos={numArticulos} numGustos={numGustos} numNoti={numNoti} elemntsGustos={elemntsGustos} DeleteItemGustos={DeleteItemGustos} setMenu={setMenu} clickProducto={clickProducto} setClickProducto={setClickProducto}  setFiltros={setFiltros} filtros={filtros} elemntsNoti={elemntsNoti} EliminarNotiFicacion={EliminarNotiFicacion} />
                         <Menu estado={estadoMenu} setEstadoMenu={setEstadoMenu} setFiltros={setFiltros} filtros={filtros} setValue={setValue} value={value} dataCategrorias={dataCategrorias}/>
                     </>
                 )

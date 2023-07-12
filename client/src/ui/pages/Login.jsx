@@ -11,7 +11,7 @@ const CryptoJS = require("crypto-js");
 const HTTP = axios.create({
     baseURL: "https://ba-mro.mx/Server/Data.php"
 })
-const clientId = "985696747479-h8l7tqvvvtf7ke939nghvkbogkkjjev6.apps.googleusercontent.com";
+const clientId = "834174042599-ok7fjvug6opngk4devckt6kgcrc3iclf.apps.googleusercontent.com";
 export const Login = ({setMenu}) => {
     const { Log } = useContext(AuthContext); 
     const navigate = useNavigate(); 

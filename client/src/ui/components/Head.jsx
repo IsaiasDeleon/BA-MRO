@@ -2,8 +2,9 @@ import { useContext, useEffect } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { AuthContext } from "../../auth/AuthContext"
 import { CardGustos } from "./CardGustos"
+import { CardNoti } from "./CardNoti"
 
-export const Head = ({ setEstadoMenu, numArticulos, numGustos, elemntsGustos, DeleteItemGustos, setMenu, setClickProducto,setFiltros, filtros }) => {
+export const Head = ({ setEstadoMenu, numArticulos, numGustos,numNoti, elemntsGustos, DeleteItemGustos, setMenu, setClickProducto,setFiltros, filtros, elemntsNoti,EliminarNotiFicacion }) => {
     const onSubmitShowMenu = () => {
         setEstadoMenu(true)
     }
@@ -81,8 +82,21 @@ export const Head = ({ setEstadoMenu, numArticulos, numGustos, elemntsGustos, De
                         }
 
                         <div>
-                            <a className="nav-link" ><i className="bi bi-bell h5"></i>
-                                <div className="text-center Notificaciones"><p style={{ "marginTop": "-3px", "color": "#fff" }} >1</p></div></a>
+                            <div className="dropdown">
+                                <div className="nav-link  col-2 dropdown-toggle"  data-bs-toggle="dropdown" aria-expanded="false" title="Contra ofertas">
+                                    <i className="bi bi-bell h5"></i>
+                                    <div className="text-center Notificaciones"><p style={{ "marginTop": "-3px", "color": "#fff" }} > {numNoti} </p>
+                                    </div>
+                                    <ul style={{"maxHeight":"375px", "overflowY":"auto" }} className="dropdown-menu ulcarrito" aria-labelledby="dropdownMenuButton1">
+                                       {
+                                        elemntsNoti?.map((data) => (
+                                            <CardNoti key={data.id} {...data} EliminarNotiFicacion={EliminarNotiFicacion} setClickProducto={setClickProducto} />
+                                        ))
+                                       }
+                                     
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                         <div >
                             <div className="dropdown">
