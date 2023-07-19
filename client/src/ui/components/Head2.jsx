@@ -3,8 +3,9 @@ import { Link, useNavigate } from "react-router-dom"
 import { AuthContext } from "../../auth/AuthContext"
 import { types } from "../../types/types";
 import { CardGustos } from "./CardGustos";
+import { CardNoti } from "./CardNoti"
 
-export const Head2 = ({  numArticulos, numGustos, elemntsGustos, DeleteItemGustos, setMenu, setClickProducto }) => {
+export const Head2 = ({  numArticulos, numGustos, elemntsGustos, DeleteItemGustos, setMenu, setClickProducto, elemntsNoti,EliminarNotiFicacion,ComprarProductoNoti,numNoti }) => {
     const { LogOut, user } = useContext(AuthContext); 
     const navigate = useNavigate(); 
     const onLogout = () =>{
@@ -70,8 +71,21 @@ export const Head2 = ({  numArticulos, numGustos, elemntsGustos, DeleteItemGusto
                                 </>
                         }
                          <div>
-                            <a className="nav-link" ><i className="bi bi-bell h5"></i>
-                                <div className="text-center Notificaciones"><p style={{ "marginTop": "-3px", "color": "#fff" }} >1</p></div></a>
+                         <div className="dropdown">
+                                <div className="nav-link  col-2 dropdown-toggle"  data-bs-toggle="dropdown" aria-expanded="false" title="Contra ofertas">
+                                    <i className="bi bi-bell h5"></i>
+                                    <div className="text-center Notificaciones"><p style={{ "marginTop": "-3px", "color": "#fff" }} > {numNoti} </p>
+                                    </div>
+                                    <ul style={{"maxHeight":"375px", "overflowY":"auto" }} className="dropdown-menu ulcarrito" aria-labelledby="dropdownMenuButton1">
+                                       {
+                                        elemntsNoti?.map((data) => (
+                                            <CardNoti key={data.id} {...data} EliminarNotiFicacion={EliminarNotiFicacion} setClickProducto={setClickProducto} ComprarProductoNoti={ComprarProductoNoti} />
+                                        ))
+                                       }
+                                     
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                         <div >
                             <div className="dropdown">

@@ -131,7 +131,7 @@ export const Producto = ({setIdCard, setIdCard2, clickProducto, setMenu, setClic
                     <hr/>
                     <h6>Marca/Fabricante: <b className="text-secondary"> {datosProducto?.[0]?.Marca}</b></h6>
                     <h6>Código del proveedor (SKU/ID): <b className="text-secondary"> {datosProducto?.[0]?.CodigoProveedor}</b></h6>
-                    <h6>Peso aproximado:<b className="text-secondary"> {datosProducto?.[0]?.Peso} KG</b></h6>
+                    <h6>Peso aproximado:<b className="text-secondary"> {datosProducto?.[0]?.Peso}</b></h6>
                     <h6>Estado:<b className={`${(datosProducto?.[0]?.Estado === "1")?"text-success":"text-primary"}`}> {(datosProducto?.[0]?.Estado === "1")?"Nuevo":"Semi-nuevo" }</b></h6>
                     <h6>Estatus:<b className="text-secondary"> Disponible</b></h6>
                     <h6>Tiempo de entrega: <b className="text-secondary"> {datosProducto?.[0]?.TempodeEntrega}</b></h6>
