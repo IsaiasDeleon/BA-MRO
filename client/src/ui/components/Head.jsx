@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom"
 import { AuthContext } from "../../auth/AuthContext"
 import { CardGustos } from "./CardGustos"
 import { CardNoti } from "./CardNoti"
-
+import { CardNotiAceptar } from "./CardNotiAceptar"
 export const Head = ({ setEstadoMenu, numArticulos, numGustos,numNoti, elemntsGustos, DeleteItemGustos, setMenu, setClickProducto,setFiltros, filtros, elemntsNoti,EliminarNotiFicacion,ComprarProductoNoti }) => {
     const onSubmitShowMenu = () => {
         setEstadoMenu(true)
@@ -88,9 +88,13 @@ export const Head = ({ setEstadoMenu, numArticulos, numGustos,numNoti, elemntsGu
                                     <div className="text-center Notificaciones"><p style={{ "marginTop": "-3px", "color": "#fff" }} > {numNoti} </p>
                                     </div>
                                     <ul style={{"maxHeight":"375px", "overflowY":"auto" }} className="dropdown-menu ulcarrito" aria-labelledby="dropdownMenuButton1">
-                                       {
+                                        {
                                         elemntsNoti?.map((data) => (
-                                            <CardNoti key={data.id} {...data} EliminarNotiFicacion={EliminarNotiFicacion} setClickProducto={setClickProducto} ComprarProductoNoti={ComprarProductoNoti} />
+                                            data.TipoNoti === "ContraOferta"?
+                                        (<CardNoti key={data.id} {...data} EliminarNotiFicacion={EliminarNotiFicacion} setClickProducto={setClickProducto} ComprarProductoNoti={ComprarProductoNoti} />):
+                                        (<CardNotiAceptar key={data.id} {...data} EliminarNotiFicacion={EliminarNotiFicacion} setClickProducto={setClickProducto} ComprarProductoNoti={ComprarProductoNoti} />)
+                                            
+                                            
                                         ))
                                        }
                                      

@@ -95,6 +95,8 @@ export const MyProducts = ({ setMenu }) => {
             let Peso = document.getElementById(`PesoIN${id}`).value;
             let TempodeEntrega = document.getElementById(`TempodeEntregaIN${id}`).value;
             let TempoDdeEntregaAgotado = document.getElementById(`TempoDdeEntregaAgotadoIN${id}`).value;
+            let almacen = document.getElementById(`AlmacenIN${id}`).value;
+            let almacenUbi = document.getElementById(`AlmaUbiIN${id}`).value;
             let pdf = document.getElementById(`file${id}`);
             if(Categoria === ""){
                 message("CategoriaAll", id);
@@ -136,7 +138,14 @@ export const MyProducts = ({ setMenu }) => {
                 message("TempoDdeEntregaAgotadoINAll", id);
                 return;
             }
-
+            if(almacen === ""){
+                message("AlmacenAll", id);
+                return;
+            }
+            if(almacenUbi === ""){
+                message("AlmacenUbiAll", id);
+                return;
+            }
             let file = pdf.files[0];
             console.log(file + "-" + id)
             let arr;
@@ -146,13 +155,13 @@ export const MyProducts = ({ setMenu }) => {
                     formData.set('file', file);
                     const response = await HTTP.post("/updatePro",formData);
                     //const response = await axios.post(URLServer + 'updatePro', formData);
-                    arr = { Nombre, Categoria, Estado, Oferta, Descripcion, Precio, PrecioOferta, Stock, id, Marca, CodigoProveedor, Peso, TempodeEntrega, TempoDdeEntregaAgotado, PDF: response.data };
+                    arr = { Nombre, Categoria, Estado, Oferta, Descripcion, Precio, PrecioOferta, Stock, id, Marca, CodigoProveedor, Peso, TempodeEntrega, TempoDdeEntregaAgotado,almacen,almacenUbi, PDF: response.data };
                     datos.push(arr)
                 } catch (error) {
                     console.error(error);
                 }
             }else{
-                arr = { Nombre, Categoria, Estado, Oferta, Descripcion, Precio, PrecioOferta, Stock, id, Marca, CodigoProveedor, Peso, TempodeEntrega, TempoDdeEntregaAgotado, PDF:1 };
+                arr = { Nombre, Categoria, Estado, Oferta, Descripcion, Precio, PrecioOferta, Stock, id, Marca, CodigoProveedor, Peso, TempodeEntrega, TempoDdeEntregaAgotado,almacen,almacenUbi, PDF:1 };
                 datos.push(arr)
             }
         
@@ -173,6 +182,9 @@ export const MyProducts = ({ setMenu }) => {
     return (
         <>
             <div style={{ "width": "100%", "height": "100%", "marginTop": "80px" }} >
+                <div style={{"width":"100%","padding":"4px","marginBottom":"2px"}} className="alert alert-primary text-center " role="alert">
+                    <h5 className="text-center">Los campos con el simbolo (<code>*</code>) se consideran obligatorios</h5>
+                </div>
                 {productos.map((productos) => (
                     <CardMisProductos key={productos.id} {...productos} saveOne={saveOne} />
                 ))}
