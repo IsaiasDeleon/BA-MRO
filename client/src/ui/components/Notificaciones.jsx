@@ -208,7 +208,29 @@ export const Noti = ({ notiCarrito, activeNoti, ide="" }) => {
         message= "El campo Ubicación almacen es un campo obligatorio";
         color="warning";
     }
-    
+    else if(notiCarrito === "NombrePerfil"){
+        message = "El campo nombre es un campo obligatorio"
+        color="warning";
+    }
+    else if(notiCarrito === "TelefonoPerfil"){
+        message = "El campo telefono es un campo obligatorio"
+        color="warning";
+    }
+    else if(notiCarrito === "passPerfil"){
+        message = "El campo contraseña es un campo obligatorio"
+        color="warning";
+    }
+    else if(notiCarrito === "direccionPerfil"){
+        message = "El campo dirección es un campo obligatorio"
+        color="warning";
+    }
+    else if(notiCarrito === "CPPerfil"){
+        message = "El campo Código postal es un campo obligatorio"
+        color="warning";
+    }else if(notiCarrito === "ImagenUsuario"){
+        message = "Su foto de usuario ha sido actualizada";
+        color = "success"
+    }
     
     return (
         <div style={{ "position": "fixed", "right": "20px", "top": "80px", "zIndex": "1", "display": "block" }} className={`toast align-items-center text-bg-${color} border-0 animate__animated ${(activeNoti) ? 'animate__fadeInRight' : 'animate__fadeOutRight'} `} role="alert" aria-live="assertive" aria-atomic="true">
