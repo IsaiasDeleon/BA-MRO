@@ -115,7 +115,7 @@ export const EditarPerfil = ({ numArticulos, setMenu }) => {
             getEstados()
             getMunicipios()
             getD()
-            //getCompras()
+            getCompras()
         }
         setMenu(2)
     }, [])
@@ -184,10 +184,13 @@ export const EditarPerfil = ({ numArticulos, setMenu }) => {
     }
     function getCompras() {
         if(idU !== undefined){
-            axios.post(URLServer + "getCompras", { "idUsuario": idU }).then((response) => {
+            console.log(idU)
+            HTTP.post("/getCompras", { "idUsuario": idU }).then((response) => {
+                console.log(response)
                 if (response.data == "0Elements") {
                     setElementsCarrito(0)
                 } else {
+                    setElementsCarrito(response.data.length)
                     setCompras(response.data)
                 }
             })
@@ -473,10 +476,10 @@ export const EditarPerfil = ({ numArticulos, setMenu }) => {
                         <div className="text-start marginPerfil">
                             <h5 className='tituloPerfil'>Historial de compras</h5>
                             <ul>
-                                {compras.map((elementsCompras) => (
-                                    <li style={{ "margin": "5px" }}>
-                                        <p style={{ "margin": "0" }} className="fw-bold datosPerfil">{elementsCompras.Name}</p>
-                                        <p style={{ "margin": "0" }} className="text-secondary FechasPerfil">{elementsCompras.Fecha}</p>
+                                 {compras.map((elementsCompras) => (
+                                    <li key={elementsCompras.idArticulo} style={{ "margin": "5px" }}>
+                                        <p style={{ "margin": "0" }} className="fw-bold datosPerfil">{elementsCompras.nombreArticulo}</p>
+                                        <p style={{ "margin": "0" }} className="text-secondary FechasPerfil">{elementsCompras.fechaCompra}</p>
                                     </li>
                                 ))}
                             </ul>
