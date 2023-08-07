@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export const Card = ({ id, img, empresa, descripcion, estrellas, monto,Stock, setIdCard, Estado, setClickProducto, montoOferta, Oferta }) => {
     const navigate = useNavigate();
@@ -20,14 +20,14 @@ export const Card = ({ id, img, empresa, descripcion, estrellas, monto,Stock, se
     }
     return (
         <div className="card contenedorC">
-            <h6 style={{"position":"absolute","left":"10px","top":"10px"}} className={`fw-bold ${Estado == "1" ? "text-success" :"text-primary"} `}>{Estado == "1" ? "Nuevo" : "Semi-Nuevo"}</h6>
+            <h6 style={{"position":"absolute","left":"10px","top":"10px"}} className={`fw-bold ${Estado === "1" ? "text-success" :"text-primary"} `}>{Estado === "1" ? "Nuevo" : "Semi-Nuevo"}</h6>
             <h6 style={{"position":"absolute","right":"10px","top":"10px"}} className={`fw-bold text-secondary `}>Stock: {Stock}</h6>
             <div className="text-center divImgMT">
                     <img src={`https://ba-mro.mx/Server/Images/${imagenes}`} onClick={() => ProductoShow(id)} alt="IMGCompra" className="ImgCard" />
             </div>
             <div className="content-txt TextCard">
                 <div className="TextCardSeccion" >
-                    <h6 className="text-secondary"></h6>
+                    <h6 className="text-secondary">.</h6>
                     <div className="text-end">
                         <i style={{ "margin": "3px" }} className={`bi bi-star-fill ${(estrellas >= 1) ? 'text-warning' : ''}`}></i>
                         <i style={{ "margin": "3px" }} className={`bi bi-star-fill ${(estrellas >= 2) ? 'text-warning' : ''}`}></i>

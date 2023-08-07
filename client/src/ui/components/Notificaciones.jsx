@@ -21,122 +21,122 @@ export const Noti = ({ notiCarrito, activeNoti, ide="" }) => {
     //         break;
     //     case "UsuarioIncorrecto"
     // }
-    if (notiCarrito == "Agregado") {
+    if (notiCarrito === "Agregado") {
         message = "El producto fue agregado a tu carrito."
         color = "success"
     }
-    else if( notiCarrito == "AgregadoGustos") {
+    else if( notiCarrito === "AgregadoGustos") {
         message = "El producto fue agregado a tus gustos."
         color = "success"
     }
-    else if( notiCarrito == "ExisteGustos"){
+    else if( notiCarrito === "ExisteGustos"){
         message = "El producto ya se encuentra en tus gustos."
         color = "warning"
     }
-    else if (notiCarrito == "Existe") {
+    else if (notiCarrito === "Existe") {
         message = "El producto ya se encuentra en tu carrito."
         color = "warning"
     }
-    else if (notiCarrito == "Eliminado") {
+    else if (notiCarrito === "Eliminado") {
         message = "El producto fue elimando de tu carrito."
         color = "danger"
     }
-    else if (notiCarrito == "Guardada") {
+    else if (notiCarrito === "Guardada") {
         message = "Ubicación guardada.";
         color = "success"
     }
-    else if (notiCarrito == "UbicacionError") {
+    else if (notiCarrito === "UbicacionError") {
         message = "Activa la ubicación.";
         color = "danger";
     }
-    else if( notiCarrito == "UsuarioIncorrecto") {
+    else if( notiCarrito === "UsuarioIncorrecto") {
         message = "Las credenciales que ingreso son incorrectas. por favor verifique sus datos";
         color = "danger";
     }
-    else if(notiCarrito == "CorreoVacio"){
+    else if(notiCarrito === "CorreoVacio"){
         message = "El correo es un compo obligatorio";
         color = "warning"
     }
-    else if(notiCarrito == "NombreVacio"){
+    else if(notiCarrito === "NombreVacio"){
         message = "El nombre es un campo obligatorio";
         color = "warning";
     }
-    else if(notiCarrito == "PassVacio"){
+    else if(notiCarrito === "PassVacio"){
         message = "La contraseña es un campo obligatorio";
         color = "warning"
     }
-    else if( notiCarrito == "Actualizado"){
+    else if( notiCarrito === "Actualizado"){
         message = "El usuario fue actualizado";
         color = "success";
     }
-    else if(notiCarrito == "EliminadoGusto"){
+    else if(notiCarrito === "EliminadoGusto"){
         message = "El producto fue eliminado de tus guardados";
         color = "danger";
     }
-    else if(notiCarrito == "CorreoEnviado"){
+    else if(notiCarrito === "CorreoEnviado"){
         message = "La oferta fue enviada al proveedor, mantente alerta a tus notificaciones por si acepta la oferta o te hace una contra oferta";
         color = "success";
     }
-    else if(notiCarrito == "CorreoEnviado2"){
+    else if(notiCarrito === "CorreoEnviado2"){
         message = "¡Gracias por su compra se le envio información a su correo!";
         color = "success";
     }
-    else if( notiCarrito == "errorCorreo"){
+    else if( notiCarrito === "errorCorreo"){
         message = "Algo salio mal porfavor recarga la pagina y vuelve a internatrlo.";
         color = "danger";
     }
-    else if(notiCarrito == "PDFcreado"){
+    else if(notiCarrito === "PDFcreado"){
         message = "La cotización fue generada";
         color = "success";
     }
-    else if(notiCarrito == "ErrorPDF"){
+    else if(notiCarrito === "ErrorPDF"){
         message = "Algo salio mal por favor recarga la pagina y vuelve a intentarlo";
         color = "danger"
     }
-    else if(notiCarrito == "ArticuloUpdate"){
+    else if(notiCarrito === "ArticuloUpdate"){
         message = "Articulo actualizado exitosamente"
         color = "success"
     }
-    else if( notiCarrito == "ElementosActualizados"){
+    else if( notiCarrito === "ElementosActualizados"){
         message = "Articulos actualizados";
         color = "success";
-    }else if(notiCarrito == "Stock"){
+    }else if(notiCarrito === "Stock"){
         message = "El campo Stock es un campo obligatorio.";
         color="warning"
-    }else if(notiCarrito == "descripcion"){
+    }else if(notiCarrito === "descripcion"){
         message = "El campo descripcion es un campo obligatorio.";
         color="warning"
-    }else if(notiCarrito == "Precio"){
+    }else if(notiCarrito === "Precio"){
         message = "El campo Precio es un campo obligatorio.";
         color="warning"
-    }else if(notiCarrito == "Nombre"){
+    }else if(notiCarrito === "Nombre"){
         message = "El campo Nombre es un campo obligatorio.";
         color="warning"
-    }else if(notiCarrito == "TiempoEN"){
+    }else if(notiCarrito === "TiempoEN"){
         message ="El campo Tiempo de entrega es un campo obligatorio.";
         color="warning";
-    }else if(notiCarrito == "IncluirFoto"){
+    }else if(notiCarrito === "IncluirFoto"){
         message = "Debes incluir almenos una foto del producto";
         color="warning";
-    }else if(notiCarrito == "MarcaEN"){
+    }else if(notiCarrito === "MarcaEN"){
         message = "El campo Marca es un campo obligatorio";
         color="warning";
-    }else if(notiCarrito == "CodigoProveedor"){
+    }else if(notiCarrito === "CodigoProveedor"){
         message = "El campo Código es un campo obligatorio";
         color="warning";
-    }else if(notiCarrito == "PesoIN"){
+    }else if(notiCarrito === "PesoIN"){
         message = "El campo Peso es un campo obligatorio";
         color="warning";
-    }else if(notiCarrito == "TempoDdeEntregaAgotadoIN"){
+    }else if(notiCarrito === "TempoDdeEntregaAgotadoIN"){
         message = "El campo Tiempo de entrega en caso de agotarse es un campo obligatorio.";
         color="warning";
-    }else if(notiCarrito == "identificadorAIN"){
+    }else if(notiCarrito === "identificadorAIN"){
         message = "El campo Identificador almacen es un campo obligatorio";
         color="warning";
-    }else if(notiCarrito == "numParteIN"){
+    }else if(notiCarrito === "numParteIN"){
         message = "El campo Número de parte es un campo obligatorio";
         color="warning";
-    }else if(notiCarrito == "ArticuloInsertado"){
+    }else if(notiCarrito === "ArticuloInsertado"){
         message = "Muy bien, el producto fue regitsrado";
         color="success";
     }else if(notiCarrito === "Imagenactualizadas"){

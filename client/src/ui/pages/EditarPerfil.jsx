@@ -4,18 +4,17 @@ import axios from 'axios';
 import { useForm } from "../../hooks/useForm"
 import { Noti } from '../components/Notificaciones';
 import { AuthContext } from '../../auth/AuthContext';
-const URLServer = "http://192.168.100.18:3020/"
+
 const HTTP = axios.create({
     baseURL: "https://ba-mro.mx/Server/Data.php"
 })
-// Importa la biblioteca de crypto-js para el hash SHA-256
-const CryptoJS = require("crypto-js");
+
 export const EditarPerfil = ({ numArticulos, setMenu }) => {
 
     const { user } = useContext(AuthContext);
     let idU = user?.id;
     let img = user?.img;
-    if(user?.google == 1){
+    if(user?.google === 1){
         img = user?.img;
     }else{
         img = (img) ? `https://ba-mro.mx/Server/ImagesUser/${img}` : `https://ba-mro.mx/Server/Images/Ge.jpg`;
@@ -185,7 +184,6 @@ export const EditarPerfil = ({ numArticulos, setMenu }) => {
         })
     }
     function getMunicipios2() {
-        console.log(estado2)
         HTTP.post("/getMunicipio",{ "Estado": estado2 }).then((response) => {
             setValueMunicipio2(response.data)
         })
@@ -239,9 +237,7 @@ export const EditarPerfil = ({ numArticulos, setMenu }) => {
     }
     function getCompras() {
         if(idU !== undefined){
-            console.log(idU)
             HTTP.post("/getCompras", { "idUsuario": idU }).then((response) => {
-                console.log(response)
                 if (response.data == "0Elements") {
                     setElementsCarrito(0)
                 } else {

@@ -4,7 +4,7 @@ import { CardCarrito } from '../components/CardCarrito';
 import { Noti } from '../components/Notificaciones';
 import { AuthContext } from '../../auth/AuthContext';
 import { useNavigate } from 'react-router';
-const URLServer = "http://192.168.100.18:3020/"
+
 const HTTP = axios.create({
     baseURL: "https://ba-mro.mx/Server/Data.php"
 })
@@ -18,12 +18,12 @@ export const Carrito = ({ NumElementsCarrito, setMenu }) => {
     const [notiCarrito, setNotiCarrito] = useState();
     const [activeNoti, setActiveNoti] = useState();
     const [imgProducts, setImgProducts] = useState(true);
-    const [valueCP, setValueCP] = useState("");
-    const [valueUbi, setValueUbi] = useState("");
+    // const [valueCP, setValueCP] = useState("");
+    // const [valueUbi, setValueUbi] = useState("");
     const [Telefono, setTelefono] = useState("1");
     const [direccion, setDireccion] = useState("");
     const [CP, setCP] = useState("");
-    const [pais, setPais] = useState("");
+    // const [pais, setPais] = useState("");
     const [estado, setEstado] = useState(1);
     const [municipio, setMunicipio] = useState(1);
     const [latitude, setLatitude] = useState(0);
@@ -37,18 +37,18 @@ export const Carrito = ({ NumElementsCarrito, setMenu }) => {
     const [estado2, setEstado2] = useState(1);
     const [municipio2, setMunicipio2] = useState(1);
 
-    const onInputChange2 = ({ target }) => {
-        const { name, value } = target;
-        switch (name) {
-            case 'Ubicación':
-                setValueUbi(value);
-                break;
-            case 'CP':
-                setValueCP(value);
-                break;
+    // const onInputChange2 = ({ target }) => {
+    //     const { name, value } = target;
+    //     switch (name) {
+    //         case 'Ubicación':
+    //             setValueUbi(value);
+    //             break;
+    //         case 'CP':
+    //             setValueCP(value);
+    //             break;
 
-        }
-    }
+    //     }
+    // }
     const handleCheckboxChange = () => {
         setOtraUbiCheck(!OtraUbiCheck);
     };
@@ -84,7 +84,7 @@ export const Carrito = ({ NumElementsCarrito, setMenu }) => {
             setTelefono(respuesta.telefono);
             setDireccion(respuesta.Direccion);
             setCP(respuesta.CP);
-            setPais("Mexico");
+            // setPais("Mexico");
             setEstado(respuesta.estado);
             setMunicipio(respuesta.municipio);
             setLatitude(respuesta.latitude);
@@ -106,7 +106,7 @@ export const Carrito = ({ NumElementsCarrito, setMenu }) => {
         if (idU !== undefined) {
             HTTP.post("/deleteItem", { "idU": idU, "id": id }).then((response) => {
                 //Si la operacion se hizo correctamente nos regresara Eliminado
-                if (response.data == "Eliminado") {
+                if (response.data === "Eliminado") {
                     //Mandamos a llamar a la funcion de getItemCarrito para obtener la actualizacion de los elementos 
                     getItemCarrito()
                     //Llamamos a la funcion NumELementsCarrito para obtener ka actualizacion de los elementos en el carrito
@@ -140,7 +140,7 @@ export const Carrito = ({ NumElementsCarrito, setMenu }) => {
                         }
 
                         //Validamos que no venga vacio
-                        if (element == "") {
+                        if (element === "") {
                             element = 0;
                         }
 

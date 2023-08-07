@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react"
+import { useContext } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { AuthContext } from "../../auth/AuthContext"
 import { CardGustos } from "./CardGustos"
@@ -14,7 +14,7 @@ export const Head = ({ setEstadoMenu, numArticulos, numGustos,numNoti, elemntsGu
     let idU = user?.id;
     let img = user?.img;
     
-    if(user?.google == 1){
+    if(user?.google === 1){
         img = user?.img;
     }else{
         img = (img) ? `https://ba-mro.mx/Server/ImagesUser/${img}` : `https://ba-mro.mx/Server/Images/Ge.jpg`;
@@ -157,29 +157,7 @@ export const Head = ({ setEstadoMenu, numArticulos, numGustos,numNoti, elemntsGu
                     </div>
                 </div>
                 <hr style={{ "width": "95%", "margin": "0", "marginLeft": "2.5%" }} />
-                <ul style={{ "width": "500px" }} className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                        <li>
-                                            <div className=" align-items-center FilaCarritoItem" style={{"display":"grid","gridTemplateColumns":"20% 80%"}}>
-
-                                                <div >
-                                                  
-                                                    <img src={`./assets/${img}.jpg`} alt="IMGCompra" className="GustosIMG" />
-                                                </div>
-                                                <div className=" ms-3" style={{ "width": "100%" }}>
-                                                   
-                                                    <h5 className="TitulosMenu">Descripción:</h5>
-                                                    <p className="text-secondary OpcionesFont" >Tenis Puma Junior Unisex St Activate Zapato Deportivo Comodo </p>
-                                                    <div className="d-flex justify-content-end">
-                                                        <div className="d-flex justify-content-around" style={{ "width": "20%" }}>
-                                                            <button className="btn btn-danger" style={{ "float": "right", "borderRadius": "40px" }}><i className="bi bi-heart-fill"></i></button>
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li><a onClick={onLogout} className="dropdown-item" >Cerrar sesion</a></li>
-                                    </ul>
+               
             </div>
         </>
     )

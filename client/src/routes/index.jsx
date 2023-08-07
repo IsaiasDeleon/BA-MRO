@@ -14,7 +14,6 @@ import { Login } from "../ui/pages/Login";
 import { MyProducts } from "../ui/pages/myProducts";
 import { NewProduct } from "../ui/pages/NewProduct";
 import { ComprasProduct } from "../ui/pages/Compras";
-const URLServer = "http://192.168.100.18:3020/"
 const HTTP = axios.create({
     baseURL: "https://ba-mro.mx/Server/Data.php"
 })
@@ -60,7 +59,7 @@ export const AppRoute = () => {
             const [dataCategrorias, setCataCategrorias] = useState([])
 
             //FILTROS Object
-            const [value, setValue] = useState([1000, 4000]);
+            const [value, setValue] = useState([1000, 15000]);
             const [filtros, setFiltros] = useState({
                 Catego:"",
                 text:"",
@@ -70,7 +69,7 @@ export const AppRoute = () => {
             });
             function getCate(){
                 HTTP.post("/getCat",{"id":1}).then((response) => {
-                    if(response.data != ""){
+                    if(response.data !== ""){
                         setCataCategrorias(response.data)
                     }else{
                         setCataCategrorias([])
@@ -82,7 +81,7 @@ export const AppRoute = () => {
             },[])
             function busquedas(){
                 HTTP.post("/PruebasBusqueda",filtros).then((response) => {
-                    if(response.data != ""){
+                    if(response.data !== ""){
                         setDataFiltrado(response.data)
                     }else{
                         setDataFiltrado([])
@@ -98,7 +97,7 @@ export const AppRoute = () => {
                 setNumNoti(0)
                 if(idU !== undefined){
                     HTTP.post("/GetNumNoti",{"id":idU}).then((response) => {
-                        console.log(response.data)
+                       
                         if(response.data !== ""){
                             setNumNoti(response.data)
                         }
@@ -111,7 +110,7 @@ export const AppRoute = () => {
                 setElementsNoti([])
                 if(idU !== undefined){
                     HTTP.post("/GetElementsNoti", {"id":idU}).then((response) => {
-                        console.log(response)
+                       
                         if(response.data !== ""){
                             setElementsNoti(response?.data);
                         }
@@ -153,12 +152,12 @@ export const AppRoute = () => {
                 }
             }
             function DeleteItemGustos(id) {
-                console.log("entro")
+            
                 if( idU !== undefined ){
-                    console.log("idU"+ idU + "id"+ id)
+                   
                     HTTP.post("/deleteItemGustos", {"idU":idU, "id": id }).then((response) => {
                         //Si la operacion se hizo correctamente nos regresara Eliminado
-                        if (response.data == "EliminadoGusto") {
+                        if (response.data === "EliminadoGusto") {
                             //Mandamos a llamar a la funcion de getItemCarrito para obtener la actualizacion de los elementos 
                             ElementsGustos()
                             //Llamamos a la funcion NumELementsCarrito para obtener ka actualizacion de los elementos en el carrito
@@ -178,8 +177,8 @@ export const AppRoute = () => {
                 if( idU !== undefined ){
                    
                     HTTP.post("/EliminarNotiFicacion", {"idU":idU, "id": id }).then((response) => {
-                        console.log(response)
-                        if (response.data == "ContraRechazada") {
+                  
+                        if (response.data === "ContraRechazada") {
                             
                             ElementsNoti()
                        
@@ -228,8 +227,8 @@ export const AppRoute = () => {
         
             useEffect(() => {
                 //Comrpobamos que el idCard no venga vacio
-                if (idCard != undefined) {
-                    if(idU == undefined){ 
+                if (idCard !== undefined) {
+                    if(idU === undefined){ 
                         return;
                     }
                     //Peticion para agregar un nuevo producto al carrito

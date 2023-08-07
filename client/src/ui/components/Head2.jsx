@@ -1,7 +1,6 @@
 import { useContext } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { AuthContext } from "../../auth/AuthContext"
-import { types } from "../../types/types";
 import { CardGustos } from "./CardGustos";
 import { CardNoti } from "./CardNoti"
 import { CardNotiAceptar } from "./CardNotiAceptar";
@@ -16,16 +15,11 @@ export const Head2 = ({  numArticulos, numGustos, elemntsGustos, DeleteItemGusto
             replace:true
         })
     }
-    const ShowLogin = () => {
-        setMenu(3)
-        navigate('/Login',{
-            replace:true
-        })
-    }
+
     let idU = user?.id;
     let img = user?.img;
     
-    if(user?.google == 1){
+    if(user?.google === 1){
         img = user?.img;
     }else{
         img = (img) ? `https://ba-mro.mx/Server/ImagesUser/${img}` : `https://ba-mro.mx/Server/Images/Ge.jpg`;

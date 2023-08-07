@@ -41,7 +41,7 @@ export const MyProducts = ({ setMenu }) => {
                 const response = await HTTP.post("/updatePro",data);
                 //const response = await axios.post(URLServer + 'updatePro', data);
                 let Alldata = { ...datos, PDF: response.data }
-                console.log(Alldata)
+               
                 HTTP.post("/updateProducto",Alldata).then((response) => {
                     if (response.data === "Actualizado") {
                         setNotiCarrito("ArticuloUpdate");
@@ -55,7 +55,7 @@ export const MyProducts = ({ setMenu }) => {
                 console.error(error);
             }
         } else {
-            console.log(datos);
+           
             HTTP.post("/updateProducto",datos).then((response) => {
                 if (response.data === "Actualizado") {
                     setNotiCarrito("ArticuloUpdate");
@@ -147,7 +147,7 @@ export const MyProducts = ({ setMenu }) => {
                 return;
             }
             let file = pdf.files[0];
-            console.log(file + "-" + id)
+           
             let arr;
             if (file !== undefined) {
                 try {
@@ -166,7 +166,7 @@ export const MyProducts = ({ setMenu }) => {
             }
         
             if(datos.length === productos.length){
-                console.log(datos)
+               
                 HTTP.post("/updateProductos", datos).then((response) => {
                     if(response.data === "ElementosActualizados")
                         setNotiCarrito("ElementosActualizados");

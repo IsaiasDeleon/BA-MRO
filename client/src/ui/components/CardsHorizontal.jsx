@@ -22,7 +22,7 @@ export const CardHorizontal = ({ id, img, empresa, descripcion, estrellas, monto
         <div className="d-flex align-items-center FilaCarritoItem" >
             
             <div className="contenedorC">
-            <h5 style={{"float":"left"}} className={`fw-bold ${Estado == "1" ? "text-success" :"text-primary"} `}>{Estado == "1" ? "Nuevo" : "Semi-Nuevo"}</h5>
+            <h5 style={{"float":"left"}} className={`fw-bold ${Estado === "1" ? "text-success" :"text-primary"} `}>{Estado === "1" ? "Nuevo" : "Semi-Nuevo"}</h5>
             <h5 style={{"float":"right"}}className={`fw-bold text-secondary `}>Stock: {Stock}</h5>
                 <img onClick={() => ProductoShow(id)} src={`https://ba-mro.mx/Server/Images/${imagenes}`} alt="IMGCompra" className="ImgCard2" />
             </div>

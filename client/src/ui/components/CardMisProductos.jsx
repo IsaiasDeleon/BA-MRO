@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import axios from "axios";
 
 import { useForm } from "../../hooks/useForm"
@@ -8,7 +8,7 @@ const HTTP = axios.create({
     baseURL: "https://ba-mro.mx/Server/Data.php"
 })
 export const CardMisProductos = ({ id, img, descripcion, estrellas, monto, montoOferta, Stock, Estado, Estatus, nombre = "", Categoria, Oferta, saveOne, Fecha, empresa, Marca, CodigoProveedor, Peso, TempodeEntrega, TempoDdeEntregaAgotado, PDF, almacen, ubiAlma }) => {
-    let O = Oferta == "0" ? false : true;
+    let O = Oferta === "0" ? false : true;
     const { onInputChange, nombreIN, descripcionIN, precioIN, precioOfertaIN, stokIN, estadoIN, categoriaIN, marcaIN, CodigoProveedorIN, PesoIN, TempodeEntregaIN, TempoDdeEntregaAgotadoIN,AlmacenIN,AlmaUbiIN } = useForm({
         nombreIN: nombre,
         descripcionIN: descripcion,
@@ -111,7 +111,7 @@ export const CardMisProductos = ({ id, img, descripcion, estrellas, monto, monto
             Estado: estadoIN,
             Estatus: "1",
             Fecha,
-            Oferta: check == false?0:1,
+            Oferta: check === false?0:1,
             Stock: stokIN,
             descripcion: descripcionIN,
             empresa,
@@ -132,13 +132,12 @@ export const CardMisProductos = ({ id, img, descripcion, estrellas, monto, monto
         )
 
     }
-    let images = img?.split(',');
+
     let imagenes = img?.split(',');
 
     
     function deleteImage(e,image,id) {
         HTTP.post("/deleteImagen",{"img":image, "id":id}).then((response) => {
-            console.log(response.data)
             let element = e.target;
             let elementPadre = element.parentNode;
             elementPadre.remove();
@@ -206,7 +205,7 @@ export const CardMisProductos = ({ id, img, descripcion, estrellas, monto, monto
                 {
                     
                     imagenes?.map((image, index) => (
-                        image != "" ?(
+                        image !== "" ?(
                             <div style={{"width":"47%","display":"inline-block","border":"2px dashed #D7DBDD","margin":"3px"}} className="image" key={index}>
                             <img src={`https://ba-mro.mx/Server/Images/${image}`} alt="IMGCompra"  className="ImgMisProductos" />
                             <i style={{"float":"right","margin":"0"}} onClick={(e) => deleteImage(e, image, id)} className="bi bi-trash-fill h4"></i>

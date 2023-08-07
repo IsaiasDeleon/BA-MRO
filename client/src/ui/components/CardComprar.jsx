@@ -3,17 +3,6 @@ export const CardComprar = ({ id, img, descripcion, EliminarNotiFicacion,empresa
     function EliminarNoti(id){
         EliminarNotiFicacion(id)
     }
-    function ComprarProductoN(id) {
-        ComprarProductoNoti(id)
-        
-    }
-    let images = img?.split(',');
-    let imagenes = "";
-    if(images?.[0] === undefined){
-       imagenes = "Box.jpg"
-    }else{
-        imagenes = images?.[0]
-    }
     return (
         <li>
             <div className="align-items-center FilaCarritoItem d-flex" style={{ "padding": "4px" }}>

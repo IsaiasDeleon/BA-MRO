@@ -11,12 +11,12 @@ export const ComprasProduct = ({ setMenu }) => {
   let idU = user?.id;
   const [notiCarrito, setNotiCarrito] = useState();
   const [activeNoti, setActiveNoti] = useState();
-  const [ubica, setUbica] = useState("");
+  // const [ubica, setUbica] = useState("");
   
   const [Telefono, setTelefono] = useState("1");
   const [direccion, setDireccion] = useState("");
   const [CP, setCP] = useState("");
-  const [pais, setPais] = useState("");
+  // const [pais, setPais] = useState("");
   const [estado, setEstado] = useState(1);
   const [municipio, setMunicipio] = useState(1);
   const [latitude, setLatitude] = useState(0);
@@ -64,7 +64,7 @@ export const ComprasProduct = ({ setMenu }) => {
         setTelefono(respuesta.telefono);
         setDireccion(respuesta.Direccion);
         setCP(respuesta.CP);
-        setPais("Mexico");
+        // setPais("Mexico");
         setEstado(respuesta.estado);
         setMunicipio(respuesta.municipio);
         setLatitude(respuesta.latitude);
@@ -72,18 +72,7 @@ export const ComprasProduct = ({ setMenu }) => {
     }
     
 }
-  const onInputChange2 = ({ target }) => {
-    const { name, value } = target;
-    switch (name) {
-        case 'Direc':
-          setUbica(value);
-          break;
-        case 'CodP':
-          setCP(value);
-          break;
-       
-    }
-}
+ 
   useEffect(() => {
     setMenu(2);
     getD();

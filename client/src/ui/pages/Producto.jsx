@@ -30,7 +30,7 @@ export const Producto = ({setIdCard, setIdCard2, clickProducto, setMenu, setClic
     useEffect(() => {
         if(clickProducto !== undefined){
             HTTP.post("/GetProducto", {"idProduct":clickProducto}).then((response) => {
-                console.log(response.data)
+              
                 setDatosProducto(response.data)
                 let images = response.data[0]?.img?.split(',');
                 let valueImagen = "";

@@ -38,7 +38,7 @@ export const Inicio = ({ data = [], setData, NumElementsCarrito = [], dataFiltra
             }
             //Peticion para agregar un nuevo producto al carrito
             HTTP.post("/gustos", { "idU": idU, "Num": idCard }).then((response) => {
-                console.log(response.data)
+              
                 //Actualizamos el mensaje que nos envio el server para mostarr la alerta
                 setNotiCarrito(response.data)
                 //Activamos y desactivamos la alerta para tener una animacion

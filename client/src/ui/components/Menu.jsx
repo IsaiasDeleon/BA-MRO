@@ -1,5 +1,5 @@
-import axios from 'axios';
-import { useEffect, useState } from 'react';
+
+import { useState } from 'react';
 import Slider from '@mui/material/Slider';
 import Stack from '@mui/material/Stack';
 
@@ -7,7 +7,7 @@ import Stack from '@mui/material/Stack';
 function valuetext(value) {
     return `${value}`;
 }
-const URLServer = "http://192.168.100.18:3020/"
+
 export const Menu = ({ estado, setEstadoMenu, setFiltros, filtros, setValue, value, dataCategrorias }) => {
     const [FiltroCat,setFiltroCat] = useState([]) 
     const onSubmitHideMenu = () => {
@@ -134,7 +134,7 @@ export const Menu = ({ estado, setEstadoMenu, setFiltros, filtros, setValue, val
                                 min={1}
                                 max={25000}
                                 valueLabelDisplay="on"
-                                step={15000}
+                                step={100}
                                 getAriaValueText={valuetext}
                                 color="warning"
                                 onChangeCommitted={FiltValor}

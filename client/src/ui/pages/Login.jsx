@@ -1,6 +1,5 @@
 import { useContext, useEffect, useState } from "react"
 import { AuthContext } from "../../auth/AuthContext"
-import { types } from "../../types/types";
 import { useNavigate } from "react-router";
 import axios from "axios";
 import { Noti } from "../components/Notificaciones";
@@ -64,7 +63,6 @@ export const Login = ({setMenu}) => {
        
         
        HTTP.post("/Login",{"user":correo,"pass":password}).then((response) => {
-        console.log(response)
         if(response.data){
             const lastPath = localStorage.getItem('lastPath') || '/';
             let data = response.data;
@@ -112,7 +110,6 @@ export const Login = ({setMenu}) => {
        }
 
        HTTP.post("/Registrar",{"nombre":nombre,"correo":correo,"pass":pass}).then((response) => {
-            console.log(response.data)
             setNotiCarrito(response.data);
             setActiveNoti(true)
             setTimeout(() => {
@@ -166,7 +163,6 @@ export const Login = ({setMenu}) => {
                                     <label className="fw-bold mt-2">Contraseña:</label>
                                     <input type="password" autoComplete="off" id="Contrasena2" name="Contrasena" value={pass} placeholder="Contraseña" onChange={onInputChange} />
                                     <button onClick={(e) => onRegister(e)} style={{"backgroundColor": "#303030", "width": "100%"}} className="btn mt-3 text-white">Registrarse</button>
-                                    <button onClick={(e) => onRegister(e)} style={{"backgroundColor": "#303030", "width": "100%"}} className="btn mt-3 text-white">Rigistrar con google <i style={{"float":"right"}} className="bi bi-google"></i></button>
                                 </form>
                         }
                         <label className="switch">
