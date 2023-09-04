@@ -9,7 +9,7 @@ const URLServer = "http://192.168.100.18:3020/"
 const HTTP = axios.create({
     baseURL: "https://ba-mro.mx/Server/Data.php"
 })
-export const MyProducts = ({ setMenu }) => {
+export const MyProducts = ({ setMenu, misProductos }) => {
     const { user } = useContext(AuthContext);
     let idU = user?.id;
 
@@ -24,7 +24,6 @@ export const MyProducts = ({ setMenu }) => {
         HTTP.post("/getMyProducts",{"idU": idU }).then((response) => {
             //Si la respuesta es correacta modificaremos el array con los objetos que obtenga desde la busqueda
             setProductos(response.data)
-            console.log(response.data)
         })
         
     }
@@ -80,7 +79,7 @@ export const MyProducts = ({ setMenu }) => {
     }
     function saveAll() {
         let datos = [];
-       const d =  productos.map(async (element) => {
+       const d =  misProductos.map(async (element) => {
             let id = element.id;
             let Nombre = document.getElementById(`nombreIN${id}`).value;
             let Categoria = document.getElementById(`categoriaIN${id}`).value;
@@ -165,7 +164,7 @@ export const MyProducts = ({ setMenu }) => {
                 datos.push(arr)
             }
         
-            if(datos.length === productos.length){
+            if(datos.length === misProductos.length){
                
                 HTTP.post("/updateProductos", datos).then((response) => {
                     if(response.data === "ElementosActualizados")
@@ -185,7 +184,7 @@ export const MyProducts = ({ setMenu }) => {
                 <div style={{"width":"100%","padding":"4px","marginBottom":"2px"}} className="alert alert-primary text-center " role="alert">
                     <h5 className="text-center">Los campos con el simbolo (<code>*</code>) se consideran obligatorios</h5>
                 </div>
-                {productos.map((productos) => (
+                {misProductos.map((productos) => (
                     <CardMisProductos key={productos.id} {...productos} saveOne={saveOne} />
                 ))}
             </div>

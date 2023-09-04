@@ -130,6 +130,11 @@ export const Login = ({setMenu}) => {
         };
         gapi.load('client:auth2', start)
     },[])
+    function somos(){
+        navigate("/Somos", {
+            replace: true
+        })
+    }
     return (
         <>
             <div className="contenedor">
@@ -139,6 +144,7 @@ export const Login = ({setMenu}) => {
                         <h2 role="tooltip" className="fw-bold text-white h2">
                             Market place <b style={{"color": "rgb(241, 196, 15)"}}>B</b><b style={{"color": "rgb(41, 128, 185)"}}>A</b>
                         </h2>
+                        <button type="button" onClick={()=>somos()} className="btn btn-light mt-3">Conócenos <i style={{"color":"#303030"}} className="bi bi-hand-index-thumb-fill"></i></button>
                     </picture>
                 </div>
                 <div className="contentLog">
