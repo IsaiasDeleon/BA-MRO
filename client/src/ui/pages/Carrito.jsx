@@ -36,7 +36,14 @@ export const Carrito = ({ NumElementsCarrito, setMenu }) => {
     const [CP2, setCP2] = useState("");
     const [estado2, setEstado2] = useState(1);
     const [municipio2, setMunicipio2] = useState(1);
-
+    useEffect(() => {
+        setTimeout(() => {
+            const backdrops = document.querySelectorAll('.modal-backdrop');
+            backdrops.forEach(backdrop => {
+                backdrop.style.display = 'none';
+            });
+        }, 100);
+    }, []);
     // const onInputChange2 = ({ target }) => {
     //     const { name, value } = target;
     //     switch (name) {

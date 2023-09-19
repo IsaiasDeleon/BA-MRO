@@ -29,7 +29,14 @@ export const EditarPerfil = ({ numArticulos, setMenu }) => {
 
     const [notiCarrito, setNotiCarrito] = useState();
     const [activeNoti, setActiveNoti] = useState();
-
+    useEffect(() => {
+        setTimeout(() => {
+            const backdrops = document.querySelectorAll('.modal-backdrop');
+            backdrops.forEach(backdrop => {
+                backdrop.style.display = 'none';
+            });
+        }, 100);
+    }, []);
 
     const [Nombre, setNombre] = useState("");
     const [Telefono, setTelefono] = useState("1");

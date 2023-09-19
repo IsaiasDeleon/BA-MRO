@@ -238,9 +238,16 @@ export const AppRoute = () => {
             useEffect(() => {
                 //Comrpobamos que el idCard no venga vacio
                 if (idCard !== undefined) {
-                    if(idU === undefined){ 
-                        return;
-                    }
+                    if(idU == undefined){ 
+                        //Actualizamo el mensaje que nos envio el server para mostrar en pantalla
+                        setNotiCarrito("NotUserGustos");
+                        //Activamos y desactivamos la alerta para atener una animacion
+                        setActiveNoti(true);
+                        setTimeout(() => {
+                            setActiveNoti(false)
+                        }, 4000);
+                       return;
+                   }
                     //Peticion para agregar un nuevo producto al carrito
                     HTTP.post("/gustos", { "idU": idU,"Num": idCard }).then((response) => {
                         //Actualizamos el mensaje que nos envio el server para mostarr la alerta
@@ -261,8 +268,16 @@ export const AppRoute = () => {
                 //Comprobamos que el idCar2 no este vacio
                 if(idCard2 !== undefined){
                     if(idU === undefined){
+                        
+                        //Actualizamo el mensaje que nos envio el server para mostrar en pantalla
+                        setNotiCarrito("NotUserCarrito");
+                        //Activamos y desactivamos la alerta para atener una animacion
+                        setActiveNoti(true);
+                        setTimeout(() => {
+                            setActiveNoti(false)
+                        }, 4000);
                         return;
-                    }
+                   }
                     HTTP.post("/carrito", {"idU":idU,"Num":idCard2}).then((response) => {
                         //Actualizamo el mensaje que nos envio el server para mostrar en pantalla
                         setNotiCarrito(response.data);
